@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<?charles serialisation-version='2.0' ?>
+<rewriteSets>
+  <rewriteSet>
+    <active>true</active>
+    <name>LikesSteal</name>
+    <hosts>
+      <locationPatterns>
+        <locationMatch>
+          <location>
+            <protocol>http</protocol>
+            <host>144.31.255.0</host>
+            <port>3001</port>
+            <path>/api/likes/cats/21/likes</path>
+          </location>
+        </locationMatch>
+      </locationPatterns>
+    </hosts>
+    <rules>
+      <rewriteRule>
+        <active>true</active>
+        <ruleType>7</ruleType>
+        <matchValue>(&quot;likes&quot;:\s*)(\d+)</matchValue>
+        <matchValueRegex>true</matchValueRegex>
+        <matchResponse>true</matchResponse>
+        <newValue>\&quot;likes&quot;:9999</newValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+      <rewriteRule>
+        <active>true</active>
+        <ruleType>7</ruleType>
+        <matchValue>(&quot;dislikes&quot;:\s*)(\d+)</matchValue>
+        <matchValueRegex>true</matchValueRegex>
+        <matchResponse>true</matchResponse>
+        <newValue>\&quot;dislikes&quot;: 0</newValue>
+        <caseSensitive>false</caseSensitive>
+        <replaceType>2</replaceType>
+      </rewriteRule>
+    </rules>
+  </rewriteSet>
+</rewriteSets>
